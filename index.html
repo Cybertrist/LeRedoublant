@@ -32,11 +32,11 @@ html{scrollbar-color:#6B5536 #0E0B09;scrollbar-width:thin}
 
 /* ---------- Accueil ---------- */
 .accueil{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;
-  gap:clamp(32px,6vw,96px);padding:clamp(32px,6vw,96px) clamp(20px,7vw,120px);position:relative;overflow:hidden}
+  gap:clamp(32px,6vw,96px);padding:clamp(20px,4vh,64px) clamp(20px,7vw,120px) clamp(36px,5vh,64px);position:relative;overflow:hidden}
 .accueil::before{content:'';position:absolute;inset:-20%;pointer-events:none;
   background:radial-gradient(40% 50% at 28% 45%,rgba(201,163,106,.16),transparent 70%),radial-gradient(35% 40% at 90% 100%,rgba(201,163,106,.07),transparent 70%)}
 .objet{justify-self:center;perspective:1600px;position:relative}
-.livre3d{position:relative;width:min(340px,70vw);aspect-ratio:992/1586;transform-style:preserve-3d;
+.livre3d{position:relative;width:min(340px,70vw,48vh);aspect-ratio:992/1586;transform-style:preserve-3d;
   transform:rotateY(-24deg) rotateX(4deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .objet:hover .livre3d{transform:rotateY(-10deg) rotateX(2deg)}
 .livre3d .face{position:absolute;inset:0;border-radius:2px 6px 6px 2px;overflow:hidden;transform:translateZ(18px);
@@ -50,7 +50,14 @@ html{scrollbar-color:#6B5536 #0E0B09;scrollbar-width:thin}
 /* Toute la fiche est centrée, comme la quatrième de couverture imprimée :
    titre, texte, boutons et infos sur un même axe. */
 .fiche{position:relative;max-width:560px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-self:center}
-/* Le bloc titre suit la couverture : série, titre, filet et auteur sur un
+/* Le titre est celui de la couverture, découpé dans Couverture.png sur fond
+   transparent (titre.png) : mêmes lettres, même feuille d'or, même
+   arabesque. Sa largeur suit aussi la hauteur de l'écran, pour que les
+   boutons restent visibles sans défiler. */
+h1.entete{margin:0;line-height:0;padding:0;background:none;filter:none;color:inherit;display:flex}
+h1.entete img{display:block;width:min(520px,100%,30vh * 1.705);height:auto}
+/* (ancien bloc titre en texte, gardé pour la page de titre du livre)
+   Le bloc titre suit la couverture : série, titre, filet et auteur sur un
    même axe, centrés sur la largeur du titre. */
 .entete{display:inline-flex;flex-direction:column;align-items:center;text-align:center}
 .entete .serie{display:flex;flex-direction:column;align-items:center;gap:0;padding-left:.42em;font-family:'Bebas Neue',Oswald,sans-serif;font-size:19px;letter-spacing:.34em;color:#C9A36A}
@@ -70,8 +77,8 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
 .lueur::after{content:'';position:absolute;left:50%;top:50%;width:26px;height:5px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#FFF0CC,rgba(255,220,150,0));filter:blur(.5px)}
 .arabesque{width:64%;margin:16px 0 12px;color:#B8904F;display:block}
 .auteur{font-family:Oswald,sans-serif;font-size:15px;letter-spacing:.42em;text-transform:uppercase;color:var(--texte)}
-.quatrieme{max-width:470px;margin:22px auto 26px;font-family:'EB Garamond',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#D9CDBB}
-.quatrieme p+p{margin-top:12px}
+.quatrieme{max-width:500px;margin:clamp(12px,2.4vh,26px) auto clamp(14px,2.6vh,26px);font-family:'EB Garamond',Georgia,serif;font-size:clamp(15px,min(1.55vw,2.2vh),21px);line-height:1.48;color:#D9CDBB}
+.quatrieme p+p{margin-top:clamp(6px,1.2vh,12px)}
 .quatrieme .fort{font-style:italic;color:var(--or-clair)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
 .carte .actions{justify-content:flex-start}
@@ -81,7 +88,7 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
 .bouton.creux{border:1px solid #4A3B2A;color:var(--texte)}
 .bouton.creux:hover{background:rgba(201,163,106,.08)}
 .bouton svg{width:18px;height:18px}
-.meta{margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;font-size:13px;color:var(--doux)}
+.meta{margin-top:clamp(12px,2.2vh,26px);display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;font-size:13px;color:var(--doux)}
 .meta b{color:var(--texte);font-weight:500}
 .badge18{display:inline-flex;align-items:center;justify-content:center;border:1px solid #6B3A33;color:#E8A89C;border-radius:6px;padding:2px 7px;font-size:12px;font-weight:600;letter-spacing:.05em}
 .pied{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:12px;color:#6F6456}
@@ -162,7 +169,12 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
   .serie{justify-content:center}.serie::after{display:none}
   .filet{margin-left:auto;margin-right:auto}
   .actions,.meta{justify-content:center}
-  .livre3d{width:min(230px,58vw)}
+  .livre3d{width:min(230px,50vw,30vh)}
+  /* Au téléphone, les boutons passent juste sous le titre : on peut ouvrir
+     le livre sans défiler, la quatrième se lit ensuite. */
+  .accueil{gap:22px;padding-top:24px}
+  .fiche .entete{order:0}.fiche .actions{order:1;margin-top:16px}.fiche .quatrieme{order:2}.fiche .meta{order:3;margin-top:0}
+  h1.entete img{width:min(330px,86vw)}
   .fleche{display:none}
   .barre .titre{letter-spacing:.12em}
 }
@@ -193,12 +205,7 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
     <div class="ombre"></div>
   </div>
   <section class="fiche">
-    <div class="entete">
-      <div class="serie">Les Récits brûlants<div class="lueur"></div></div>
-      <h1>Le<br>Redoublant</h1>
-      <svg class="arabesque" viewBox="0 0 300 14" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 7h118M182 7h118" stroke-opacity=".8"/><path d="M150 2l5 5-5 5-5-5z" fill="currentColor"/><path d="M143 7c-4-4-9-4-11 0 2 3 6 3 8 0M157 7c4-4 9-4 11 0-2 3-6 3-8 0M132 7c-4-3-9-3-13 0M168 7c4-3 9-3 13 0"/></svg>
-      <div class="auteur">Tristan Joncour</div>
-    </div>
+    <h1 class="entete"><img src="titre.png" width="904" height="530" alt="Les Récits brûlants. Le Redoublant. Tristan Joncour."></h1>
     <div class="quatrieme" id="quatrieme"></div>
     <div class="actions">
       <button class="bouton plein" id="ouvrir">
