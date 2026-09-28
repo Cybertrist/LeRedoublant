@@ -138,22 +138,23 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
 .page.droite::after{box-shadow:inset 16px 0 22px -18px rgba(0,0,0,.35)}
 /* Garde : le papier sombre qu'on trouve derrière la couverture. */
 .nuit .page{background:#161616}
-.nuit .titre-page{background:#161616}
-.nuit .tp .a{color:#E8E0D2}
 .garde{background:#17100b radial-gradient(70% 60% at 50% 40%,rgba(201,163,106,.10),transparent 70%)}
 .garde::before{content:'';position:absolute;inset:0;opacity:.18;
   background:repeating-linear-gradient(45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px),repeating-linear-gradient(-45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px)}
 /* Page de titre, à la place de la page d'imprimeur. */
-.titre-page{background:#fff radial-gradient(80% 60% at 50% 45%,#FBF6EC,#fff 75%)}
-.tp{position:absolute;inset:7%;border:1px solid #D9C49C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  outline:1px solid #EADBBE;outline-offset:-7px}
+/* Page de titre : le titre de la couverture (titre.png) sur fond noir,
+   comme le livre imprimé, dans un double cadre doré. */
+.titre-page{background:#0B0806 radial-gradient(70% 55% at 50% 46%,rgba(201,163,106,.10),transparent 70%)}
+.tp .ti{width:94%;height:auto;display:block}
+.tp{position:absolute;inset:7%;border:1px solid rgba(201,163,106,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  outline:1px solid rgba(201,163,106,.25);outline-offset:-7px}
 .tp .s{font-family:'Bebas Neue',Oswald,sans-serif;font-size:calc(var(--fs)*.8);letter-spacing:.4em;text-transform:uppercase;color:#A8844F;padding-left:.45em}
 .tp .o{width:46%;height:1px;margin:1.3em 0;background:linear-gradient(90deg,transparent,#C9A36A,transparent);position:relative}
 .tp .o::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:#C9A36A;transform:translate(-50%,-50%) rotate(45deg)}
 .tp .g{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:uppercase;font-size:calc(var(--fs)*3.3);line-height:.88;letter-spacing:.012em;padding:.04em .04em 0;
   background:url(or.svg) center/cover,linear-gradient(180deg,#D8B77E,#B08A4F 55%,#7E5E2E);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tp .a{font-family:'Bebas Neue',Oswald,sans-serif;font-size:calc(var(--fs)*1.05);letter-spacing:.4em;text-transform:uppercase;color:#8C6A3C;padding-left:.38em}
-.tp .r{position:absolute;bottom:9%;font-family:'EB Garamond',serif;font-style:italic;font-size:calc(var(--fs)*.9);color:#8C7B63}
+.tp .r{position:absolute;bottom:9%;font-family:'EB Garamond',serif;font-style:italic;font-size:calc(var(--fs)*.9);color:#A88A5C}
 .couv{background:#120d09}
 .couv img{width:100%;height:100%;object-fit:cover;display:block}
 /* Quatrième : le fond de la maquette (visages, titre, 18+), le texte
@@ -223,6 +224,7 @@ h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:upp
   <div class="barre">
     <button class="ico" id="fermer" title="Retour à l’accueil" aria-label="Retour à l’accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     <button class="ico" id="btn-sommaire" title="Sommaire" aria-label="Sommaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+    <button class="ico" id="recommencer" title="Recommencer au début du livre" aria-label="Recommencer au début du livre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
     <div style="flex:1"></div>
     <button class="ico" id="theme" title="Mode nuit" aria-label="Mode nuit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <button class="ico" id="plein" title="Plein écran" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
@@ -260,7 +262,7 @@ const CHAPITRES = [['Le Couloir', 5], ['TVA TEVA', 19], ['L’Approche', 39], ['
   ['Gwendal', 110], ['L’Appli', 132], ['Théo', 158], ['Le Revoir', 199], ['Démonté', 221], ['Un mot avant de refermer', 257]];
 
 $('#quatrieme').innerHTML = quatrieme;
-const TITRE = '<div class="tp"><div class="s">Les Récits brûlants</div><div class="o"></div><div class="g">Le<br>Redoublant</div><div class="o"></div><div class="a">Tristan Joncour</div><div class="r">roman</div></div>';
+const TITRE = '<div class="tp"><img class="ti" src="titre.png" alt="Les Récits brûlants. Le Redoublant. Tristan Joncour."><div class="r">roman</div></div>';
 let doc = null, flip = null, taille = null, vue = null, courante = 0, rendus = new Map(), elPages = [];
 let page = lire('page', 0);
 
@@ -401,6 +403,7 @@ function sommaire() {
 $('#btn-sommaire').onclick = e => { e.stopPropagation(); $('#sommaire').hidden = !$('#sommaire').hidden; };
 document.addEventListener('click', e => { if (!e.target.closest('#sommaire,#btn-sommaire')) $('#sommaire').hidden = true; });
 $('#prec').onclick = () => flip && flip.flipPrev();
+$('#recommencer').onclick = () => aller(0);
 $('#suiv').onclick = () => flip && flip.flipNext();
 $('#piste').onclick = e => { const r = e.currentTarget.getBoundingClientRect(); aller(Math.round((e.clientX - r.left) / r.width * (elPages.length - 1))); };
 $('#theme').onclick = () => {
