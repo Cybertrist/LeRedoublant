@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Redoublant · Tristan Joncour</title>
+<meta name="description" content="Le Redoublant, premier roman des Récits brûlants, par Tristan Joncour. À lire en ligne, en entier. Réservé aux adultes.">
+<meta name="rating" content="adult">
+<meta name="theme-color" content="#0E0B09">
+<meta property="og:title" content="Le Redoublant · Tristan Joncour">
+<meta property="og:description" content="Les Récits brûlants. Un roman à lire en ligne, réservé aux adultes (18+).">
+<meta property="og:image" content="couverture.jpg">
+<link rel="icon" href="couverture.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fond:#0E0B09; --fond2:#17120E; --or:#C9A36A; --or-clair:#E3C58F; --texte:#EDE4D6; --doux:#A89B89; --trait:#2E251C;
+  --papier:#F3EADB; --papier-bord:#E4D6BF; --encre:#2A2118; --encre-douce:#6E5E4B; --filet:#CDB894;
+}
+.nuit{ --papier:#1B1611; --papier-bord:#2A2219; --encre:#E6DCCB; --encre-douce:#9C8E7B; --filet:#5B4A33; }
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--fond);color:var(--texte);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+
+/* ---------- Accueil ---------- */
+.accueil{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;
+  gap:clamp(32px,6vw,96px);padding:clamp(32px,6vw,96px) clamp(20px,7vw,120px);position:relative;overflow:hidden}
+.accueil::before{content:'';position:absolute;inset:-20%;pointer-events:none;
+  background:radial-gradient(40% 50% at 28% 45%,rgba(201,163,106,.16),transparent 70%),radial-gradient(35% 40% at 90% 100%,rgba(201,163,106,.07),transparent 70%)}
+.objet{justify-self:center;perspective:1600px;position:relative}
+.livre3d{position:relative;width:min(340px,70vw);aspect-ratio:992/1586;transform-style:preserve-3d;
+  transform:rotateY(-24deg) rotateX(4deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.objet:hover .livre3d{transform:rotateY(-10deg) rotateX(2deg)}
+.livre3d .face{position:absolute;inset:0;border-radius:2px 6px 6px 2px;overflow:hidden;transform:translateZ(18px);
+  box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04)}
+.livre3d .face img{width:100%;height:100%;display:block}
+.livre3d .face::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35) 0,rgba(255,255,255,.08) 2.5%,transparent 6%,transparent 94%,rgba(0,0,0,.15))}
+.livre3d .tranche{position:absolute;top:3px;bottom:3px;right:0;width:34px;transform:rotateY(90deg) translateZ(-1px) translateX(17px);transform-origin:right;
+  background:repeating-linear-gradient(0deg,#EFE6D5 0 1px,#D9CCB4 1px 2px)}
+.livre3d .dos{position:absolute;inset:0;transform:translateZ(-18px);background:#1a120c;border-radius:2px 6px 6px 2px}
+.ombre{position:absolute;left:8%;right:-4%;bottom:-40px;height:40px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.55),transparent 70%);filter:blur(6px)}
+
+.fiche{position:relative;max-width:560px}
+.serie{font-family:Oswald,sans-serif;font-weight:400;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:14px}
+.serie::after{content:'';height:1px;width:64px;background:linear-gradient(90deg,var(--or),transparent)}
+h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:.01em;margin:18px 0 14px;
+  background:linear-gradient(180deg,#F2DDB2 0%,#C9A36A 55%,#9C7A45 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.auteur{font-family:Oswald,sans-serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--texte)}
+.quatrieme{margin:30px 0 32px;font-family:'EB Garamond',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#D9CDBB}
+.quatrieme p+p{margin-top:12px}
+.quatrieme .fort{font-style:italic;color:var(--or-clair)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.bouton{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:.02em;transition:transform .15s,background .2s,box-shadow .2s}
+.bouton.plein{background:linear-gradient(180deg,#E3C58F,#C9A36A);color:#1C140C;box-shadow:0 10px 30px rgba(201,163,106,.25)}
+.bouton.plein:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(201,163,106,.35)}
+.bouton.creux{border:1px solid #4A3B2A;color:var(--texte)}
+.bouton.creux:hover{background:rgba(201,163,106,.08)}
+.bouton svg{width:18px;height:18px}
+.meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--doux)}
+.meta b{color:var(--texte);font-weight:500}
+.badge18{display:inline-flex;align-items:center;justify-content:center;border:1px solid #6B3A33;color:#E8A89C;border-radius:6px;padding:2px 7px;font-size:12px;font-weight:600;letter-spacing:.05em}
+.pied{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:12px;color:#6F6456}
+
+/* ---------- Porte 18+ ---------- */
+.porte{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(10,8,6,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.porte[hidden]{display:none}
+.carte{max-width:560px;width:100%;max-height:calc(100dvh - 40px);overflow:auto;background:linear-gradient(180deg,#1A1410,#120E0B);border:1px solid #3A2E22;border-radius:18px;padding:34px 32px 28px;
+  box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.carte .n18{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--or);color:var(--or);display:flex;align-items:center;justify-content:center;
+  font-family:Oswald,sans-serif;font-size:20px;font-weight:500;margin-bottom:18px}
+.carte h2{font-family:Oswald,sans-serif;font-weight:500;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--texte);margin-bottom:14px}
+.carte p{font-family:'EB Garamond',Georgia,serif;font-size:17.5px;line-height:1.5;color:#CFC3B1}
+.carte p+p{margin-top:10px}
+.carte .actions{margin-top:24px}
+.carte a.bouton{text-decoration:none}
+
+/* ---------- Liseuse ---------- */
+.lecteur{position:fixed;inset:0;z-index:40;background:radial-gradient(60% 60% at 50% 45%,#1E1712,#0B0907);display:flex;flex-direction:column}
+.lecteur[hidden]{display:none}
+.barre{height:56px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 max(12px,env(safe-area-inset-left)) 0 max(12px,env(safe-area-inset-right));color:var(--doux)}
+.barre .titre{flex:1;min-width:0;text-align:center;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--doux);transition:background .2s,color .2s}
+.ico:hover{background:rgba(201,163,106,.1);color:var(--or-clair)}
+.ico svg{width:20px;height:20px}
+.scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+#livre{margin:0 auto}
+.fleche{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;display:flex;align-items:center;justify-content:center;color:#6F6456;z-index:2}
+.fleche:hover{color:var(--or-clair)}
+.fleche.g{left:6px}.fleche.d{right:6px}
+.fleche svg{width:26px;height:26px}
+.bas{height:52px;flex-shrink:0;display:flex;align-items:center;gap:14px;padding:0 20px;color:var(--doux);font-size:12.5px}
+.piste{flex:1;height:3px;background:#2B231B;border-radius:2px;position:relative;cursor:pointer}
+.piste i{position:absolute;left:0;top:0;bottom:0;background:var(--or);border-radius:2px;transition:width .3s}
+.bas .num{min-width:92px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* Sommaire */
+.sommaire{position:absolute;top:56px;left:12px;width:min(340px,calc(100vw - 24px));max-height:calc(100% - 120px);overflow:auto;z-index:5;
+  background:#17120E;border:1px solid #3A2E22;border-radius:14px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.sommaire[hidden]{display:none}
+.sommaire button{width:100%;display:flex;align-items:baseline;gap:12px;text-align:left;padding:10px 12px;border-radius:9px;color:#D9CDBB}
+.sommaire button:hover,.sommaire button.ici{background:rgba(201,163,106,.1)}
+.sommaire button.ici{color:var(--or-clair)}
+.sommaire .no{font-family:Oswald,sans-serif;font-size:12px;color:var(--or);width:22px;flex-shrink:0}
+.sommaire .t{flex:1;font-family:'EB Garamond',serif;font-size:17px}
+.sommaire .p{font-size:12px;color:#7D705F;font-variant-numeric:tabular-nums}
+
+/* Pages */
+.page{background:var(--papier);color:var(--encre);overflow:hidden;font-family:'EB Garamond',Georgia,serif}
+.page .pg{position:absolute;inset:0;display:flex;flex-direction:column}
+.page.gauche .pg{box-shadow:inset -18px 0 24px -18px rgba(0,0,0,.28)}
+.page.droite .pg{box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.28)}
+.nuit .page.gauche .pg{box-shadow:inset -18px 0 24px -18px rgba(0,0,0,.6)}
+.nuit .page.droite .pg{box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.6)}
+.tete{height:var(--tete);flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;padding:0 var(--marge);
+  font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.56);letter-spacing:.3em;text-transform:uppercase;color:var(--encre-douce)}
+.texte{flex:1;min-height:0;padding:calc(var(--fs)*.9) var(--marge) 0;overflow:hidden;font-size:var(--fs);line-height:1.52;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.texte p{text-indent:1.3em}
+.texte p.suite,.texte p.premier,.texte p.court{text-indent:0}
+.texte p.premier::first-letter{font-family:Oswald,sans-serif;font-weight:500;float:left;font-size:3.1em;line-height:.9;padding:.06em .1em 0 0;color:var(--or)}
+.nuit .texte p.premier::first-letter{color:var(--or-clair)}
+/* Premier paragraphe trop court pour porter une lettrine : première ligne en petites capitales. */
+.texte p.premier-court{text-indent:0}
+.texte p.premier-court::first-line{font-variant:small-caps;letter-spacing:.06em}
+.pied-page{height:var(--pied);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:calc(var(--fs)*.72);color:var(--encre-douce);font-variant-numeric:oldstyle-nums}
+.ouverture{text-align:center;padding-top:calc(var(--fs)*2.2);padding-bottom:calc(var(--fs)*1.4)}
+.ouverture .ch{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.66);letter-spacing:.42em;text-transform:uppercase;color:var(--or)}
+.ouverture h3{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:calc(var(--fs)*1.9);line-height:1.05;letter-spacing:.04em;margin-top:.45em;color:var(--encre)}
+.ouverture .orn{width:44%;height:1px;margin:1em auto 0;background:linear-gradient(90deg,transparent,var(--filet),transparent);position:relative}
+.ouverture .orn::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:var(--or);transform:translate(-50%,-50%) rotate(45deg)}
+.centre{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--marge)}
+.centre .serie{justify-content:center;font-size:calc(var(--fs)*.62)}
+.centre .serie::after{display:none}
+.centre .gros{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:calc(var(--fs)*2.6);line-height:.95;margin:.5em 0 .35em;color:var(--encre)}
+.centre .aut{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.72);letter-spacing:.36em;text-transform:uppercase;color:var(--encre-douce)}
+.centre .ded{font-style:italic;font-size:calc(var(--fs)*1.15);line-height:1.6}
+.droits{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--marge) calc(var(--fs)*3);font-size:calc(var(--fs)*.74);line-height:1.5;color:var(--encre-douce);text-align:center}
+.droits p+p{margin-top:.8em}
+.toc{padding:0 var(--marge);font-size:var(--fs)}
+.toc h4,.sec{font-family:Oswald,sans-serif;font-weight:500;font-size:calc(var(--fs)*.9);letter-spacing:.3em;text-transform:uppercase;text-align:center;color:var(--encre);margin:calc(var(--fs)*2.4) 0 calc(var(--fs)*1.2)}
+.toc a{display:flex;align-items:baseline;gap:.5em;text-decoration:none;padding:.22em 0;color:var(--encre)}
+.toc a .l{flex:1;border-bottom:1px dotted var(--filet);transform:translateY(-.25em)}
+.toc a .n{font-variant-numeric:oldstyle-nums;color:var(--encre-douce)}
+.signature{text-align:right;font-style:italic;margin-top:1em}
+.couv{background:#120d09}
+.couv img{width:100%;height:100%;object-fit:cover;display:block}
+.dos4{background:#120d09;color:#E7DCCB}
+.dos4 .centre{justify-content:center;gap:1em}
+.dos4 p{font-family:'EB Garamond',serif;font-size:calc(var(--fs)*.98);line-height:1.5}
+.dos4 .fort{font-style:italic;color:var(--or-clair)}
+.dos4 .isbn{margin-top:1.5em;font-family:Inter,sans-serif;font-size:calc(var(--fs)*.6);letter-spacing:.14em;color:#8C7E6C}
+.mesure{position:absolute;left:-9999px;top:0;visibility:hidden}
+
+@media (max-width:880px){
+  .barre .titre{letter-spacing:.12em}
+  .accueil{grid-template-columns:1fr;text-align:center;padding-top:48px;padding-bottom:72px}
+  .fiche{margin:0 auto}
+  .serie{justify-content:center}.serie::after{display:none}
+  .actions,.meta{justify-content:center}
+  .livre3d{width:min(230px,58vw)}
+  .fleche{display:none}
+}
+@media (prefers-reduced-motion:reduce){.livre3d{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="porte" id="porte" hidden>
+  <div class="carte" role="dialog" aria-modal="true" aria-labelledby="porte-titre">
+    <div class="n18">18+</div>
+    <h2 id="porte-titre">Avertissement</h2>
+    <div id="avert"></div>
+    <div class="actions">
+      <button class="bouton plein" id="entrer">J’ai 18 ans ou plus, entrer</button>
+      <a class="bouton creux" href="https://www.google.com">Quitter</a>
+    </div>
+  </div>
+</div>
+
+<main class="accueil" id="accueil">
+  <div class="objet" aria-hidden="true">
+    <div class="livre3d"><div class="dos"></div><div class="tranche"></div><div class="face"><img src="couverture.jpg" alt=""></div></div>
+    <div class="ombre"></div>
+  </div>
+  <section class="fiche">
+    <div class="serie">Les Récits brûlants</div>
+    <h1>Le Redoublant</h1>
+    <div class="auteur">Tristan Joncour</div>
+    <div class="quatrieme" id="quatrieme"></div>
+    <div class="actions">
+      <button class="bouton plein" id="ouvrir">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>
+        <span id="ouvrir-t">Ouvrir le livre</span>
+      </button>
+      <button class="bouton creux" id="debut" hidden>Reprendre au début</button>
+    </div>
+    <div class="meta" id="meta"></div>
+  </section>
+  <div class="pied">© 2026 Tristan Joncour · Tous droits réservés</div>
+</main>
+
+<div class="lecteur" id="lecteur" hidden>
+  <div class="barre">
+    <button class="ico" id="fermer" title="Retour à l’accueil" aria-label="Retour à l’accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="ico" id="btn-sommaire" title="Sommaire" aria-label="Sommaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+    <div class="titre" id="titre-courant">Le Redoublant</div>
+    <button class="ico" id="moins" title="Texte plus petit" aria-label="Texte plus petit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19l5-13 5 13M6 14h6M17 12h5"/></svg></button>
+    <button class="ico" id="plus" title="Texte plus grand" aria-label="Texte plus grand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 19l5-13 5 13M5 14h6M19.5 9v6M16.5 12h6"/></svg></button>
+    <button class="ico" id="theme" title="Mode nuit" aria-label="Mode nuit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <button class="ico" id="plein" title="Plein écran" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+  </div>
+  <div class="sommaire" id="sommaire" hidden></div>
+  <div class="scene" id="scene">
+    <button class="fleche g" id="prec" aria-label="Page précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div id="livre"></div>
+    <button class="fleche d" id="suiv" aria-label="Page suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="bas"><div class="piste" id="piste"><i id="avance"></i></div><div class="num" id="num"></div></div>
+</div>
+
+<script src="vendor/page-flip.browser.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const cle = k => 'redoublant.' + k;
+const lire = (k, d) => { try { const v = localStorage.getItem(cle(k)); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+const ecrire = (k, v) => { try { localStorage.setItem(cle(k), JSON.stringify(v)); } catch (e) {} };
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Tiret de dialogue : le trait d’union du manuscrit devient un demi-cadratin.
+const typo = s => esc(s).replace(/^-\s*/, '– ');
+
+let L = null, flip = null, pages = [], echelle = lire('echelle', 1), ancre = lire('ancre', null), pageCourante = 0, dims = null;
+
+fetch('livre.json').then(r => r.json()).then(d => { L = d; accueil(); });
+
+function accueil() {
+  $('#avert').innerHTML = L.avertissement.map(p => '<p>' + esc(p) + '</p>').join('');
+  $('#quatrieme').innerHTML = L.quatrieme.map((p, i) => '<p' + (i === 3 ? ' class="fort"' : '') + '>' + esc(p) + '</p>').join('');
+  const mots = L.chapitres.reduce((n, c) => n + c.paras.join(' ').split(/\s+/).length, 0);
+  const h = Math.round(mots / 230 / 60 * 2) / 2;
+  $('#meta').innerHTML = '<span><b>' + L.chapitres.length + '</b> chapitres</span><span>environ <b>' + h.toString().replace('.', ',') + ' h</b> de lecture</span><span>' + L.edition.replace(' : ', ' ') + '</span><span class="badge18">18+</span>';
+  if (ancre) { $('#ouvrir-t').textContent = 'Reprendre la lecture'; $('#debut').hidden = false; }
+  if (!lire('majeur', false)) $('#porte').hidden = false;
+}
+$('#entrer').onclick = () => { ecrire('majeur', true); $('#porte').hidden = true; };
+$('#ouvrir').onclick = () => ouvrir(false);
+$('#debut').onclick = () => { ancre = null; ecrire('ancre', null); ouvrir(true); };
+$('#fermer').onclick = () => { $('#lecteur').hidden = true; document.body.style.overflow = ''; if (document.fullscreenElement) document.exitFullscreen(); accueil(); };
+
+function ouvrir(duDebut) {
+  if (!lire('majeur', false)) { $('#porte').hidden = false; return; }
+  $('#lecteur').hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (lire('nuit', false)) $('#lecteur').classList.add('nuit');
+  document.fonts.ready.then(() => monter(duDebut ? 0 : null));
+}
+
+/* ---------- Mise en pages ---------- */
+function calculer() {
+  const sc = $('#scene'), W = sc.clientWidth - (innerWidth > 880 ? 120 : 16), H = sc.clientHeight - 16;
+  const r = 0.625;
+  let h = Math.min(H, 980), w = Math.round(h * r);
+  const double = innerWidth > 880 && W >= 2 * w * 0.9;
+  if (double) { if (2 * w > W) { w = Math.floor(W / 2); h = Math.round(w / r); } }
+  else {
+    // Sur téléphone, une seule page : elle prend toute la largeur et
+    // s'allonge un peu au-delà du 5:8 pour mieux remplir l'écran.
+    w = Math.min(W, 560); h = Math.min(H, Math.round(w / 0.56));
+  }
+  const fs = Math.max(13.5, Math.min(21, w / 24.5)) * echelle;
+  return { w, h, double, fs, marge: Math.round(w * 0.105), tete: Math.round(h * 0.075), pied: Math.round(h * 0.07) };
+}
+
+function coquille(cls, html, tete, a) {
+  return { cls, html, tete, a };
+}
+
+function paginer(d) {
+  const out = [];
+  const m = document.createElement('div');
+  m.className = 'page mesure';
+  m.style.cssText += ';width:' + d.w + 'px;height:' + d.h + 'px;--fs:' + d.fs + 'px;--marge:' + d.marge + 'px;--tete:' + d.tete + 'px;--pied:' + d.pied + 'px;position:absolute';
+  m.innerHTML = '<div class="pg"><div class="tete"></div><div class="texte"></div><div class="pied-page"></div></div>';
+  $('#lecteur').appendChild(m);
+  const zone = m.querySelector('.texte');
+  const deborde = () => zone.scrollHeight > zone.clientHeight + 1;
+
+  // Coule une suite de paragraphes dans des pages successives.
+  // debut : le HTML placé en tête de la première page (ouverture de chapitre).
+  function couler(paras, tete, debut, idChap, premierCls) {
+    let courant = debut || '', a0 = null;
+    zone.innerHTML = courant;
+    // Pas de titre courant sur la page qui ouvre un chapitre, comme dans un livre.
+    let premiere = !!debut;
+    const fermer = () => { out.push({ cls: 'texte-page', html: zone.innerHTML, tete: premiere ? '' : tete, titre: tete, a: a0 }); premiere = false; zone.innerHTML = ''; a0 = null; };
+    paras.forEach((txt, i) => {
+      const cls = [];
+      if (i === 0 && premierCls) cls.push(premierCls === 'premier' && txt.length < 160 ? 'premier-court' : premierCls);
+      if (txt.length < 2) cls.push('court');
+      const aid = idChap + ':' + i;
+      const p = document.createElement('p');
+      if (cls.length) p.className = cls.join(' ');
+      p.dataset.a = aid;
+      p.innerHTML = typo(txt);
+      zone.appendChild(p);
+      if (a0 === null) a0 = aid;
+      if (!deborde()) return;
+      // Le paragraphe ne tient pas : on cherche combien de mots passent.
+      const mots = typo(txt).split(' ');
+      let bas = 0, haut = mots.length;
+      while (bas < haut) {
+        const mid = Math.ceil((bas + haut) / 2);
+        p.innerHTML = mots.slice(0, mid).join(' ');
+        if (deborde()) haut = mid - 1; else bas = mid;
+      }
+      if (bas === 0) { zone.removeChild(p); fermer(); }
+      else { p.innerHTML = mots.slice(0, bas).join(' '); p.style.textAlignLast = 'justify'; fermer(); }
+      let reste = mots.slice(bas);
+      while (reste.length) {
+        const q = document.createElement('p');
+        q.dataset.a = aid;
+        const qc = bas > 0 ? 'suite' : cls.join(' ');
+        if (qc) q.className = qc;
+        q.innerHTML = reste.join(' ');
+        zone.appendChild(q);
+        a0 = aid;
+        if (!deborde()) { reste = []; break; }
+        let b2 = 0, h2 = reste.length;
+        while (b2 < h2) { const mid = Math.ceil((b2 + h2) / 2); q.innerHTML = reste.slice(0, mid).join(' '); if (deborde()) h2 = mid - 1; else b2 = mid; }
+        q.innerHTML = reste.slice(0, b2).join(' '); q.style.textAlignLast = 'justify';
+        fermer(); reste = reste.slice(b2); bas = 1;
+      }
+    });
+    if (zone.innerHTML.trim()) fermer();
+  }
+
+  // Couverture, page de titre, droits, avertissement, dédicace, sommaire
+  out.push({ cls: 'couv', dur: true, html: '<img src="couverture.jpg" alt="Couverture du Redoublant">' });
+  out.push({ cls: 'plein', html: '<div class="centre"><div class="serie">' + esc(L.serie) + '</div><div class="gros">Le<br>Redoublant</div><div class="aut">' + esc(L.auteur) + '</div></div>' });
+  out.push({ cls: 'plein', html: '<div class="droits"><p>Copyright © 2026 par Tristan Joncour.<br>Tous droits réservés.</p><p>Aucune partie de cette publication ne peut être reproduite, distribuée ou transmise sous quelque forme ou par quelque moyen que ce soit sans l’autorisation écrite préalable de l’auteur, sauf dans le cas de brèves citations.</p><p>' + esc(L.edition) + '<br>ISBN ' + L.isbn + '</p></div>' });
+  couler(L.avertissement, '', '<div class="sec">Avertissement</div>', 'av', 'suite');
+  out.push({ cls: 'plein', html: '<div class="centre"><div class="ded">' + L.dedicace.map(esc).join('<br>') + '</div></div>' });
+  const iToc = out.length;
+  out.push({ cls: 'plein', html: '' });
+
+  const debuts = [];
+  L.chapitres.forEach(c => {
+    debuts.push(out.length);
+    const ouv = '<div class="ouverture"><div class="ch">Chapitre ' + c.n + '</div><h3>' + esc(c.titre) + '</h3><div class="orn"></div></div>';
+    couler(c.paras, c.titre, ouv, c.n, 'premier');
+  });
+  const iPost = out.length;
+  couler(L.postface.concat([]), 'Un mot avant de refermer', '<div class="sec">Un mot avant de refermer</div>', 'pf', 'suite');
+  out[out.length - 1].html += '<p class="signature">' + esc(L.signature) + '</p>';
+  // La signature peut déborder : on la vérifie comme le reste.
+  zone.innerHTML = out[out.length - 1].html;
+  if (deborde()) { out[out.length - 1].html = out[out.length - 1].html.replace(/<p class="signature">.*<\/p>$/, ''); out.push({ cls: 'texte-page', html: '<p class="signature">' + esc(L.signature) + '</p>', tete: 'Un mot avant de refermer' }); }
+
+  // Le dos doit tomber seul, en dernière page : nombre de pages pair.
+  if ((out.length + 1) % 2) out.push({ cls: 'plein', html: '' });
+  out.push({ cls: 'dos4', dur: true, html: '<div class="centre">' + L.quatrieme.map((p, i) => '<p' + (i === 3 ? ' class="fort"' : '') + '>' + esc(p) + '</p>').join('') + '<div class="isbn">ISBN ' + L.isbn + '</div></div>' });
+
+  // Sommaire, maintenant que les numéros sont connus
+  out[iToc].html = '<div class="toc"><h4>Sommaire</h4>' + L.chapitres.map((c, k) =>
+    '<a href="#" data-page="' + debuts[k] + '"><span>' + esc(c.titre) + '</span><span class="l"></span><span class="n">' + debuts[k] + '</span></a>').join('') +
+    '<a href="#" data-page="' + iPost + '"><span>Un mot avant de refermer</span><span class="l"></span><span class="n">' + iPost + '</span></a></div>';
+
+  m.remove();
+  return { pages: out, debuts, iPost };
+}
+
+function monter(forcer) {
+  dims = calculer();
+  const res = paginer(dims);
+  pages = res.pages;
+  if (flip) { try { flip.destroy(); } catch (e) {} }
+  // destroy() retire le conteneur du document : on en remet un neuf, à sa place.
+  const vieux = $('#livre'); if (vieux) vieux.remove();
+  $('#scene').insertBefore(Object.assign(document.createElement('div'), { id: 'livre' }), $('#suiv'));
+  const el = $('#livre');
+  el.style.setProperty('--fs', dims.fs + 'px'); el.style.setProperty('--marge', dims.marge + 'px');
+  el.style.setProperty('--tete', dims.tete + 'px'); el.style.setProperty('--pied', dims.pied + 'px');
+  pages.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'page ' + (p.cls || '') + ' ' + (i % 2 ? 'gauche' : 'droite');
+    if (p.dur) d.dataset.density = 'hard';
+    if (p.cls === 'texte-page') {
+      d.innerHTML = '<div class="pg"><div class="tete">' + esc(p.tete || '') + '</div><div class="texte">' + p.html + '</div><div class="pied-page">' + i + '</div></div>';
+    } else d.innerHTML = '<div class="pg">' + p.html + '</div>';
+    if (p.a) d.dataset.a = p.a;
+    el.appendChild(d);
+  });
+  flip = new St.PageFlip(el, {
+    width: dims.w, height: dims.h, size: 'fixed', showCover: true, usePortrait: !dims.double,
+    maxShadowOpacity: .45, mobileScrollSupport: false, flippingTime: 750, startZIndex: 3, autoSize: true, clickEventForward: true
+  });
+  flip.loadFromHTML(el.querySelectorAll('.page'));
+  el.querySelectorAll('.toc a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); aller(+a.dataset.page, true); }));
+  let depart = 0;
+  if (forcer === 0) depart = 0;
+  else if (ancre) {
+    // L'ancre est le paragraphe en cours : on rouvre la page qui le contient,
+    // même si la nouvelle mise en pages le fait commencer plus haut.
+    const k = pages.findIndex(p => p.html && p.html.includes('data-a="' + ancre + '"'));
+    if (k >= 0) depart = k;
+  }
+  if (depart) flip.turnToPage(depart);
+  flip.on('flip', e => apres(e.data));
+  apres(flip.getCurrentPageIndex());
+  construireSommaire(res);
+}
+
+function chapitreDe(i) {
+  let t = 'Le Redoublant';
+  for (let k = i; k >= 0; k--) if (pages[k] && pages[k].titre) { t = pages[k].titre; break; }
+  return t;
+}
+function apres(i) {
+  pageCourante = i;
+  const p = pages[i];
+  if (p && p.a) { ancre = p.a; ecrire('ancre', ancre); }
+  else if (i === 0) {}
+  $('#titre-courant').textContent = chapitreDe(i);
+  const n = pages.length;
+  $('#num').textContent = 'p. ' + Math.max(1, i) + ' / ' + (n - 1);
+  $('#avance').style.width = (100 * i / (n - 1)) + '%';
+  document.querySelectorAll('#sommaire button').forEach(b => b.classList.toggle('ici', +b.dataset.fin > i && +b.dataset.page <= i));
+}
+function aller(i, anime) { if (!flip) return; if (anime && Math.abs(i - pageCourante) < 3) flip.flip(i); else flip.turnToPage(i); apres(i); }
+
+function construireSommaire(res) {
+  const s = $('#sommaire');
+  const bornes = res.debuts.concat([res.iPost, pages.length]);
+  s.innerHTML = L.chapitres.map((c, k) => '<button data-page="' + res.debuts[k] + '" data-fin="' + bornes[k + 1] + '"><span class="no">' + c.n + '</span><span class="t">' + esc(c.titre) + '</span><span class="p">p. ' + res.debuts[k] + '</span></button>').join('') +
+    '<button data-page="' + res.iPost + '" data-fin="' + pages.length + '"><span class="no">·</span><span class="t">Un mot avant de refermer</span><span class="p">p. ' + res.iPost + '</span></button>';
+  s.querySelectorAll('button').forEach(b => b.onclick = () => { s.hidden = true; aller(+b.dataset.page); });
+  apres(pageCourante);
+}
+
+$('#btn-sommaire').onclick = e => { e.stopPropagation(); $('#sommaire').hidden = !$('#sommaire').hidden; };
+document.addEventListener('click', e => { if (!e.target.closest('#sommaire,#btn-sommaire')) $('#sommaire').hidden = true; });
+$('#prec').onclick = () => flip && flip.flipPrev();
+$('#suiv').onclick = () => flip && flip.flipNext();
+$('#piste').onclick = e => { const r = e.currentTarget.getBoundingClientRect(); aller(Math.round((e.clientX - r.left) / r.width * (pages.length - 1))); };
+$('#moins').onclick = () => { echelle = Math.max(.8, +(echelle - .1).toFixed(2)); ecrire('echelle', echelle); monter(); };
+$('#plus').onclick = () => { echelle = Math.min(1.4, +(echelle + .1).toFixed(2)); ecrire('echelle', echelle); monter(); };
+$('#theme').onclick = () => { const n = $('#lecteur').classList.toggle('nuit'); ecrire('nuit', n); };
+$('#plein').onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); };
+document.addEventListener('keydown', e => {
+  if ($('#lecteur').hidden || !flip) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); flip.flipNext(); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); flip.flipPrev(); }
+  if (e.key === 'Escape') $('#sommaire').hidden = true;
+});
+let minuterie;
+addEventListener('resize', () => {
+  if ($('#lecteur').hidden) return;
+  clearTimeout(minuterie);
+  minuterie = setTimeout(() => { const d = calculer(); if (!dims || d.w !== dims.w || d.h !== dims.h || d.double !== dims.double) monter(); }, 250);
+});
+})();
+</script>
+</body>
+</html>
