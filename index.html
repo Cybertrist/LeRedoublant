@@ -122,8 +122,11 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 .tp .r{position:absolute;bottom:9%;font-family:'EB Garamond',serif;font-style:italic;font-size:calc(var(--fs)*.9);color:#8C7B63}
 .couv{background:#120d09}
 .couv img{width:100%;height:100%;object-fit:cover;display:block}
-.dos4{background:#120d09;color:#E7DCCB;display:flex;flex-direction:column;justify-content:center;gap:1em;padding:12%;text-align:center}
-.dos4 p{font-family:'EB Garamond',serif;font-size:var(--fs,16px);line-height:1.5}
+/* Quatrième : le fond de la maquette (visages, titre, 18+), le texte
+   posé dans la partie sombre entre le titre et le logo 18+. */
+.dos4{background:#050403 url(quatrieme.jpg) center/cover no-repeat;color:#E7DCCB}
+.dos4 .q{position:absolute;left:10%;right:10%;top:52%;bottom:13%;display:flex;flex-direction:column;justify-content:center;gap:.75em;text-align:center}
+.dos4 p{font-family:'EB Garamond',serif;font-size:calc(var(--fs,16px)*.84);line-height:1.42}
 .dos4 .fort{font-style:italic;color:var(--or-clair)}
 
 @media (max-width:880px){
@@ -289,7 +292,7 @@ function monter() {
     const d = document.createElement('div');
     d.className = 'page ' + (i % 2 ? 'gauche' : 'droite');
     if (s.t === 'couv') { d.classList.add('couv'); d.dataset.density = 'hard'; d.innerHTML = '<img src="couverture.jpg" alt="Couverture du Redoublant">'; }
-    else if (s.t === 'dos') { d.classList.add('dos4'); d.dataset.density = 'hard'; d.innerHTML = quatrieme; }
+    else if (s.t === 'dos') { d.classList.add('dos4'); d.dataset.density = 'hard'; d.innerHTML = '<div class="q">' + quatrieme + '</div>'; }
     else if (s.t === 'garde') d.classList.add('garde');
     else if (s.t === 'titre') { d.classList.add('titre-page'); d.innerHTML = TITRE; }
     else d.dataset.n = s.n;
@@ -343,7 +346,7 @@ function aller(i) { if (!flip) return; flip.turnToPage(i); apres(i); }
 
 function sommaire() {
   const s = $('#sommaire');
-  s.innerHTML = CHAPITRES.map(([t, p], k) => '<button data-p="' + p + '"><span class="no">' + (k < 10 ? k + 1 : '·') + '</span><span class="t">' + t + '</span><span class="p">p. ' + p + '</span></button>').join('');
+  s.innerHTML = CHAPITRES.map(([t, p], k) => '<button data-p="' + p + '"><span class="no">' + (k < 10 ? k + 1 : '✨') + '</span><span class="t">' + t + '</span><span class="p">p. ' + p + '</span></button>').join('');
   s.querySelectorAll('button').forEach(b => b.onclick = () => { s.hidden = true; aller(indexDe(+b.dataset.p)); });
 }
 
