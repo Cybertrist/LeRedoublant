@@ -53,7 +53,7 @@ html{scrollbar-color:#6B5536 #0E0B09;scrollbar-width:thin}
 /* Le titre en or métallisé, comme sur la couverture : un dégradé à reflets,
    un liseré sombre pour détacher les lettres du fond. Il reste du texte,
    donc net à toutes les tailles. */
-h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:clamp(52px,7.6vw,104px);line-height:.9;letter-spacing:.02em;margin:22px 0 0;display:inline-block;padding-right:.12em;
+h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:clamp(52px,7.6vw,104px);line-height:.9;letter-spacing:.02em;margin:22px 0 0;display:inline-block;padding:0 .06em;text-align:center;
   background:linear-gradient(180deg,#FBEBC4 0%,#E6C68A 22%,#B98C4C 48%,#EBD29A 64%,#C69B5C 80%,#8E6A36 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 1px 0 rgba(0,0,0,.55)) drop-shadow(0 10px 24px rgba(201,163,106,.18));
@@ -119,9 +119,10 @@ h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-s
 .page.gauche::after,.page.droite::after{content:'';position:absolute;inset:0;pointer-events:none}
 .page.gauche::after{box-shadow:inset -16px 0 22px -18px rgba(0,0,0,.35)}
 .page.droite::after{box-shadow:inset 16px 0 22px -18px rgba(0,0,0,.35)}
-/* Nuit : texte presque blanc sur gris très sombre. */
-.nuit .page canvas{filter:invert(.94) hue-rotate(180deg)}
 /* Garde : le papier sombre qu'on trouve derrière la couverture. */
+.nuit .page{background:#161616}
+.nuit .titre-page{background:#161616}
+.nuit .tp .a{color:#E8E0D2}
 .garde{background:#17100b radial-gradient(70% 60% at 50% 40%,rgba(201,163,106,.10),transparent 70%)}
 .garde::before{content:'';position:absolute;inset:0;opacity:.18;
   background:repeating-linear-gradient(45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px),repeating-linear-gradient(-45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px)}
@@ -223,6 +224,7 @@ import * as pdfjs from './vendor/pdf.min.mjs';
 pdfjs.GlobalWorkerOptions.workerSrc = './vendor/pdf.worker.min.mjs';
 
 const $ = s => document.querySelector(s);
+const nuit = () => $('#lecteur').classList.contains('nuit');
 const lire = (k, d) => { try { const v = localStorage.getItem('redoublant.' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
 const ecrire = (k, v) => { try { localStorage.setItem('redoublant.' + k, JSON.stringify(v)); } catch (e) {} };
 
@@ -334,13 +336,22 @@ function monter() {
 async function dessiner(i) {
   const d = elPages[i];
   if (!d || !d.dataset.n || rendus.has(i)) return;
-  rendus.set(i, true);
+  const jeton = {}; rendus.set(i, jeton);
   const pg = await doc.getPage(+d.dataset.n);
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const v = pg.getViewport({ scale: taille.w / vue.width * dpr });
   const c = document.createElement('canvas');
   c.width = Math.round(v.width); c.height = Math.round(v.height);
-  await pg.render({ canvasContext: c.getContext('2d'), viewport: v }).promise;
+  const ctx = c.getContext('2d');
+  await pg.render({ canvasContext: ctx, viewport: v }).promise;
+  // Nuit : on inverse les couleurs dans l'image elle-même. Un filtre CSS sur
+  // la page ferait scintiller Chrome pendant que la page tourne en 3D.
+  if (nuit()) {
+    ctx.globalCompositeOperation = 'difference'; ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+    ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = '#161616'; ctx.fillRect(0, 0, c.width, c.height);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  if (rendus.get(i) !== jeton) return;
   d.replaceChildren(c);
 }
 function autour(i) {
@@ -373,7 +384,11 @@ document.addEventListener('click', e => { if (!e.target.closest('#sommaire,#btn-
 $('#prec').onclick = () => flip && flip.flipPrev();
 $('#suiv').onclick = () => flip && flip.flipNext();
 $('#piste').onclick = e => { const r = e.currentTarget.getBoundingClientRect(); aller(Math.round((e.clientX - r.left) / r.width * (elPages.length - 1))); };
-$('#theme').onclick = () => { const n = $('#lecteur').classList.toggle('nuit'); $('#theme').classList.toggle('actif', n); ecrire('nuit', n); };
+$('#theme').onclick = () => {
+  const n = $('#lecteur').classList.toggle('nuit'); $('#theme').classList.toggle('actif', n); ecrire('nuit', n);
+  // Les pages sont redessinées dans les nouvelles couleurs.
+  rendus = new Map(); autour(courante);
+};
 $('#plein').onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); };
 document.addEventListener('keydown', e => {
   if ($('#lecteur').hidden || !flip) return;
