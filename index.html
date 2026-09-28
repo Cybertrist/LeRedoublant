@@ -22,6 +22,13 @@ html,body{height:100%}
 body{background:var(--fond);color:var(--texte);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit}
+/* Barre de défilement aux couleurs du site : rail sombre, poignée dorée. */
+html{scrollbar-color:#6B5536 #0E0B09;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0E0B09}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#8E6A36,#C9A36A 50%,#8E6A36);border-radius:10px;border:2px solid #0E0B09}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#B08A4F,#E3C58F 50%,#B08A4F)}
+::-webkit-scrollbar-corner{background:#0E0B09}
 
 /* ---------- Accueil ---------- */
 .accueil{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;
@@ -43,9 +50,17 @@ a{color:inherit}
 .fiche{position:relative;max-width:560px}
 .serie{font-family:Oswald,sans-serif;font-weight:400;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:14px}
 .serie::after{content:'';height:1px;width:64px;background:linear-gradient(90deg,var(--or),transparent)}
-h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:.01em;margin:18px 0 14px;
-  background:linear-gradient(180deg,#F2DDB2 0%,#C9A36A 55%,#9C7A45 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.auteur{font-family:Oswald,sans-serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--texte)}
+/* Le titre en or métallisé, comme sur la couverture : un dégradé à reflets,
+   un liseré sombre pour détacher les lettres du fond. Il reste du texte,
+   donc net à toutes les tailles. */
+h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:clamp(52px,7.6vw,104px);line-height:.9;letter-spacing:.02em;margin:22px 0 0;display:inline-block;padding-right:.12em;
+  background:linear-gradient(180deg,#FBEBC4 0%,#E6C68A 22%,#B98C4C 48%,#EBD29A 64%,#C69B5C 80%,#8E6A36 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.55)) drop-shadow(0 10px 24px rgba(201,163,106,.18));
+  text-rendering:geometricPrecision}
+.filet{width:min(300px,70%);height:1px;margin:22px 0 18px;background:linear-gradient(90deg,transparent,#C9A36A 30%,#C9A36A 70%,transparent);position:relative}
+.filet::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:#E3C58F;transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 10px rgba(227,197,143,.6)}
+.auteur{font-family:Oswald,sans-serif;font-size:15px;letter-spacing:.42em;text-transform:uppercase;color:var(--texte)}
 .quatrieme{margin:30px 0 32px;font-family:'EB Garamond',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#D9CDBB}
 .quatrieme p+p{margin-top:12px}
 .quatrieme .fort{font-style:italic;color:var(--or-clair)}
@@ -104,7 +119,8 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 .page.gauche::after,.page.droite::after{content:'';position:absolute;inset:0;pointer-events:none}
 .page.gauche::after{box-shadow:inset -16px 0 22px -18px rgba(0,0,0,.35)}
 .page.droite::after{box-shadow:inset 16px 0 22px -18px rgba(0,0,0,.35)}
-.nuit .page canvas{filter:invert(.9) hue-rotate(180deg) sepia(.12)}
+/* Nuit : texte presque blanc sur gris très sombre. */
+.nuit .page canvas{filter:invert(.94) hue-rotate(180deg)}
 /* Garde : le papier sombre qu'on trouve derrière la couverture. */
 .garde{background:#17100b radial-gradient(70% 60% at 50% 40%,rgba(201,163,106,.10),transparent 70%)}
 .garde::before{content:'';position:absolute;inset:0;opacity:.18;
@@ -133,6 +149,7 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
   .accueil{grid-template-columns:1fr;text-align:center;padding-top:48px;padding-bottom:72px}
   .fiche{margin:0 auto}
   .serie{justify-content:center}.serie::after{display:none}
+  .filet{margin-left:auto;margin-right:auto}
   .actions,.meta{justify-content:center}
   .livre3d{width:min(230px,58vw)}
   .fleche{display:none}
@@ -166,7 +183,8 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
   </div>
   <section class="fiche">
     <div class="serie">Les Récits brûlants</div>
-    <h1>Le Redoublant</h1>
+    <h1>Le<br>Redoublant</h1>
+    <div class="filet"></div>
     <div class="auteur">Tristan Joncour</div>
     <div class="quatrieme" id="quatrieme"></div>
     <div class="actions">
