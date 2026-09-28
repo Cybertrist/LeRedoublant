@@ -15,11 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --fond:#0E0B09; --fond2:#17120E; --or:#C9A36A; --or-clair:#E3C58F; --texte:#EDE4D6; --doux:#A89B89; --trait:#2E251C;
-  --papier:#F3EADB; --papier-bord:#E4D6BF; --encre:#2A2118; --encre-douce:#6E5E4B; --filet:#CDB894;
-}
-.nuit{ --papier:#1B1611; --papier-bord:#2A2219; --encre:#E6DCCB; --encre-douce:#9C8E7B; --filet:#5B4A33; }
+:root{--fond:#0E0B09;--or:#C9A36A;--or-clair:#E3C58F;--texte:#EDE4D6;--doux:#A89B89}
 *{margin:0;padding:0;box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
@@ -44,7 +40,6 @@ a{color:inherit}
   background:repeating-linear-gradient(0deg,#EFE6D5 0 1px,#D9CCB4 1px 2px)}
 .livre3d .dos{position:absolute;inset:0;transform:translateZ(-18px);background:#1a120c;border-radius:2px 6px 6px 2px}
 .ombre{position:absolute;left:8%;right:-4%;bottom:-40px;height:40px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.55),transparent 70%);filter:blur(6px)}
-
 .fiche{position:relative;max-width:560px}
 .serie{font-family:Oswald,sans-serif;font-weight:400;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:14px}
 .serie::after{content:'';height:1px;width:64px;background:linear-gradient(90deg,var(--or),transparent)}
@@ -55,7 +50,7 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 .quatrieme p+p{margin-top:12px}
 .quatrieme .fort{font-style:italic;color:var(--or-clair)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.bouton{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:.02em;transition:transform .15s,background .2s,box-shadow .2s}
+.bouton{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:.02em;text-decoration:none;transition:transform .15s,background .2s,box-shadow .2s}
 .bouton.plein{background:linear-gradient(180deg,#E3C58F,#C9A36A);color:#1C140C;box-shadow:0 10px 30px rgba(201,163,106,.25)}
 .bouton.plein:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(201,163,106,.35)}
 .bouton.creux{border:1px solid #4A3B2A;color:var(--texte)}
@@ -69,40 +64,33 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 /* ---------- Porte 18+ ---------- */
 .porte{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;
   background:rgba(10,8,6,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.porte[hidden]{display:none}
-.carte{max-width:560px;width:100%;max-height:calc(100dvh - 40px);overflow:auto;background:linear-gradient(180deg,#1A1410,#120E0B);border:1px solid #3A2E22;border-radius:18px;padding:34px 32px 28px;
-  box-shadow:0 40px 100px rgba(0,0,0,.6)}
-.carte .n18{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--or);color:var(--or);display:flex;align-items:center;justify-content:center;
-  font-family:Oswald,sans-serif;font-size:20px;font-weight:500;margin-bottom:18px}
-.carte h2{font-family:Oswald,sans-serif;font-weight:500;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--texte);margin-bottom:14px}
+.carte{max-width:560px;width:100%;max-height:calc(100dvh - 40px);overflow:auto;background:linear-gradient(180deg,#1A1410,#120E0B);border:1px solid #3A2E22;border-radius:18px;padding:34px 32px 28px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.carte .n18{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--or);color:var(--or);display:flex;align-items:center;justify-content:center;font-family:Oswald,sans-serif;font-size:20px;font-weight:500;margin-bottom:18px}
+.carte h2{font-family:Oswald,sans-serif;font-weight:500;font-size:22px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
 .carte p{font-family:'EB Garamond',Georgia,serif;font-size:17.5px;line-height:1.5;color:#CFC3B1}
 .carte p+p{margin-top:10px}
 .carte .actions{margin-top:24px}
-.carte a.bouton{text-decoration:none}
 
 /* ---------- Liseuse ---------- */
 .lecteur{position:fixed;inset:0;z-index:40;background:radial-gradient(60% 60% at 50% 45%,#1E1712,#0B0907);display:flex;flex-direction:column}
-.lecteur[hidden]{display:none}
-.barre{height:56px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 max(12px,env(safe-area-inset-left)) 0 max(12px,env(safe-area-inset-right));color:var(--doux)}
+.barre{height:56px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 12px;color:var(--doux)}
 .barre .titre{flex:1;min-width:0;text-align:center;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--doux);transition:background .2s,color .2s}
 .ico:hover{background:rgba(201,163,106,.1);color:var(--or-clair)}
+.ico.actif{color:var(--or-clair)}
 .ico svg{width:20px;height:20px}
 .scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
-#livre{margin:0 auto}
 .fleche{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;display:flex;align-items:center;justify-content:center;color:#6F6456;z-index:2}
 .fleche:hover{color:var(--or-clair)}
 .fleche.g{left:6px}.fleche.d{right:6px}
 .fleche svg{width:26px;height:26px}
 .bas{height:52px;flex-shrink:0;display:flex;align-items:center;gap:14px;padding:0 20px;color:var(--doux);font-size:12.5px}
 .piste{flex:1;height:3px;background:#2B231B;border-radius:2px;position:relative;cursor:pointer}
-.piste i{position:absolute;left:0;top:0;bottom:0;background:var(--or);border-radius:2px;transition:width .3s}
+.piste i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--or);border-radius:2px;transition:width .3s}
 .bas .num{min-width:92px;text-align:right;font-variant-numeric:tabular-nums}
-
-/* Sommaire */
+.chargement{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--doux);font-size:14px;letter-spacing:.08em}
 .sommaire{position:absolute;top:56px;left:12px;width:min(340px,calc(100vw - 24px));max-height:calc(100% - 120px);overflow:auto;z-index:5;
   background:#17120E;border:1px solid #3A2E22;border-radius:14px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-.sommaire[hidden]{display:none}
 .sommaire button{width:100%;display:flex;align-items:baseline;gap:12px;text-align:left;padding:10px 12px;border-radius:9px;color:#D9CDBB}
 .sommaire button:hover,.sommaire button.ici{background:rgba(201,163,106,.1)}
 .sommaire button.ici{color:var(--or-clair)}
@@ -110,61 +98,42 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 .sommaire .t{flex:1;font-family:'EB Garamond',serif;font-size:17px}
 .sommaire .p{font-size:12px;color:#7D705F;font-variant-numeric:tabular-nums}
 
-/* Pages */
-.page{background:var(--papier);color:var(--encre);overflow:hidden;font-family:'EB Garamond',Georgia,serif}
-.page .pg{position:absolute;inset:0;display:flex;flex-direction:column}
-.page.gauche .pg{box-shadow:inset -18px 0 24px -18px rgba(0,0,0,.28)}
-.page.droite .pg{box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.28)}
-.nuit .page.gauche .pg{box-shadow:inset -18px 0 24px -18px rgba(0,0,0,.6)}
-.nuit .page.droite .pg{box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.6)}
-.tete{height:var(--tete);flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;padding:0 var(--marge);
-  font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.56);letter-spacing:.3em;text-transform:uppercase;color:var(--encre-douce)}
-.texte{flex:1;min-height:0;padding:calc(var(--fs)*.9) var(--marge) 0;overflow:hidden;font-size:var(--fs);line-height:1.52;
-  text-align:justify;hyphens:auto;-webkit-hyphens:auto}
-.texte p{text-indent:1.3em}
-.texte p.suite,.texte p.premier,.texte p.court{text-indent:0}
-.texte p.premier::first-letter{font-family:Oswald,sans-serif;font-weight:500;float:left;font-size:3.1em;line-height:.9;padding:.06em .1em 0 0;color:var(--or)}
-.nuit .texte p.premier::first-letter{color:var(--or-clair)}
-/* Premier paragraphe trop court pour porter une lettrine : première ligne en petites capitales. */
-.texte p.premier-court{text-indent:0}
-.texte p.premier-court::first-line{font-variant:small-caps;letter-spacing:.06em}
-.pied-page{height:var(--pied);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:calc(var(--fs)*.72);color:var(--encre-douce);font-variant-numeric:oldstyle-nums}
-.ouverture{text-align:center;padding-top:calc(var(--fs)*2.2);padding-bottom:calc(var(--fs)*1.4)}
-.ouverture .ch{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.66);letter-spacing:.42em;text-transform:uppercase;color:var(--or)}
-.ouverture h3{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:calc(var(--fs)*1.9);line-height:1.05;letter-spacing:.04em;margin-top:.45em;color:var(--encre)}
-.ouverture .orn{width:44%;height:1px;margin:1em auto 0;background:linear-gradient(90deg,transparent,var(--filet),transparent);position:relative}
-.ouverture .orn::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:var(--or);transform:translate(-50%,-50%) rotate(45deg)}
-.centre{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--marge)}
-.centre .serie{justify-content:center;font-size:calc(var(--fs)*.62)}
-.centre .serie::after{display:none}
-.centre .gros{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:calc(var(--fs)*2.6);line-height:.95;margin:.5em 0 .35em;color:var(--encre)}
-.centre .aut{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.72);letter-spacing:.36em;text-transform:uppercase;color:var(--encre-douce)}
-.centre .ded{font-style:italic;font-size:calc(var(--fs)*1.15);line-height:1.6}
-.droits{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--marge) calc(var(--fs)*3);font-size:calc(var(--fs)*.74);line-height:1.5;color:var(--encre-douce);text-align:center}
-.droits p+p{margin-top:.8em}
-.toc{padding:0 var(--marge);font-size:var(--fs)}
-.toc h4,.sec{font-family:Oswald,sans-serif;font-weight:500;font-size:calc(var(--fs)*.9);letter-spacing:.3em;text-transform:uppercase;text-align:center;color:var(--encre);margin:calc(var(--fs)*2.4) 0 calc(var(--fs)*1.2)}
-.toc a{display:flex;align-items:baseline;gap:.5em;text-decoration:none;padding:.22em 0;color:var(--encre)}
-.toc a .l{flex:1;border-bottom:1px dotted var(--filet);transform:translateY(-.25em)}
-.toc a .n{font-variant-numeric:oldstyle-nums;color:var(--encre-douce)}
-.signature{text-align:right;font-style:italic;margin-top:1em}
+/* Les pages sont celles du PDF, dessinées telles quelles. */
+.page{background:#fff;overflow:hidden}
+.page canvas{width:100%;height:100%;display:block}
+.page.gauche::after,.page.droite::after{content:'';position:absolute;inset:0;pointer-events:none}
+.page.gauche::after{box-shadow:inset -16px 0 22px -18px rgba(0,0,0,.35)}
+.page.droite::after{box-shadow:inset 16px 0 22px -18px rgba(0,0,0,.35)}
+.nuit .page canvas{filter:invert(.9) hue-rotate(180deg) sepia(.12)}
+/* Garde : le papier sombre qu'on trouve derrière la couverture. */
+.garde{background:#17100b radial-gradient(70% 60% at 50% 40%,rgba(201,163,106,.10),transparent 70%)}
+.garde::before{content:'';position:absolute;inset:0;opacity:.18;
+  background:repeating-linear-gradient(45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px),repeating-linear-gradient(-45deg,transparent 0 22px,rgba(201,163,106,.5) 22px 23px)}
+/* Page de titre, à la place de la page d'imprimeur. */
+.titre-page{background:#fff radial-gradient(80% 60% at 50% 45%,#FBF6EC,#fff 75%)}
+.tp{position:absolute;inset:7%;border:1px solid #D9C49C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  outline:1px solid #EADBBE;outline-offset:-7px}
+.tp .s{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.62);letter-spacing:.45em;text-transform:uppercase;color:#A8844F;padding-left:.45em}
+.tp .o{width:46%;height:1px;margin:1.3em 0;background:linear-gradient(90deg,transparent,#C9A36A,transparent);position:relative}
+.tp .o::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:#C9A36A;transform:translate(-50%,-50%) rotate(45deg)}
+.tp .g{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:calc(var(--fs)*2.9);line-height:.92;letter-spacing:.01em;
+  background:linear-gradient(180deg,#D8B77E 0%,#B08A4F 55%,#7E5E2E 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp .a{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.78);letter-spacing:.38em;text-transform:uppercase;color:#2A2118;padding-left:.38em}
+.tp .r{position:absolute;bottom:9%;font-family:'EB Garamond',serif;font-style:italic;font-size:calc(var(--fs)*.9);color:#8C7B63}
 .couv{background:#120d09}
 .couv img{width:100%;height:100%;object-fit:cover;display:block}
-.dos4{background:#120d09;color:#E7DCCB}
-.dos4 .centre{justify-content:center;gap:1em}
-.dos4 p{font-family:'EB Garamond',serif;font-size:calc(var(--fs)*.98);line-height:1.5}
+.dos4{background:#120d09;color:#E7DCCB;display:flex;flex-direction:column;justify-content:center;gap:1em;padding:12%;text-align:center}
+.dos4 p{font-family:'EB Garamond',serif;font-size:var(--fs,16px);line-height:1.5}
 .dos4 .fort{font-style:italic;color:var(--or-clair)}
-.dos4 .isbn{margin-top:1.5em;font-family:Inter,sans-serif;font-size:calc(var(--fs)*.6);letter-spacing:.14em;color:#8C7E6C}
-.mesure{position:absolute;left:-9999px;top:0;visibility:hidden}
 
 @media (max-width:880px){
-  .barre .titre{letter-spacing:.12em}
   .accueil{grid-template-columns:1fr;text-align:center;padding-top:48px;padding-bottom:72px}
   .fiche{margin:0 auto}
   .serie{justify-content:center}.serie::after{display:none}
   .actions,.meta{justify-content:center}
   .livre3d{width:min(230px,58vw)}
   .fleche{display:none}
+  .barre .titre{letter-spacing:.12em}
 }
 @media (prefers-reduced-motion:reduce){.livre3d{transition:none}}
 </style>
@@ -175,7 +144,11 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
   <div class="carte" role="dialog" aria-modal="true" aria-labelledby="porte-titre">
     <div class="n18">18+</div>
     <h2 id="porte-titre">Avertissement</h2>
-    <div id="avert"></div>
+    <p>Cet ouvrage est une œuvre de fiction destinée à un public adulte averti (18+).</p>
+    <p>Il contient des scènes sexuellement explicites entre hommes, ainsi que des situations de contrainte, de domination, de chantage et de violence psychologique qui pourront heurter la sensibilité de certains lecteurs.</p>
+    <p>Une scène d’agression sexuelle est décrite sans détour au chapitre 4. Le récit qui suit ne la banalise pas : il en explore les conséquences, le traumatisme, la reconstruction, et la lente reprise de pouvoir du personnage sur sa propre histoire.</p>
+    <p>Tous les personnages représentés dans des scènes à caractère sexuel sont majeurs.</p>
+    <p>Dans la réalité, le consentement, la communication et la sécurité doivent toujours primer. Si vous êtes ou avez été victime de violences sexuelles, des structures d’écoute existent. En France, le 3919 (violences sexistes et sexuelles) est gratuit, anonyme et disponible 24h/24.</p>
     <div class="actions">
       <button class="bouton plein" id="entrer">J’ai 18 ans ou plus, entrer</button>
       <a class="bouton creux" href="https://www.google.com">Quitter</a>
@@ -183,7 +156,7 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
   </div>
 </div>
 
-<main class="accueil" id="accueil">
+<main class="accueil">
   <div class="objet" aria-hidden="true">
     <div class="livre3d"><div class="dos"></div><div class="tranche"></div><div class="face"><img src="couverture.jpg" alt=""></div></div>
     <div class="ombre"></div>
@@ -200,23 +173,22 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
       </button>
       <button class="bouton creux" id="debut" hidden>Reprendre au début</button>
     </div>
-    <div class="meta" id="meta"></div>
+    <div class="meta"><span><b>10</b> chapitres</span><span><b>258</b> pages</span><span>Première édition 2026</span><span class="badge18">18+</span></div>
   </section>
-  <div class="pied">© 2026 Tristan Joncour · Tous droits réservés</div>
+  <div class="pied">© 2026 Tristan Joncour · Tous droits réservés · ISBN 9791043566776</div>
 </main>
 
 <div class="lecteur" id="lecteur" hidden>
   <div class="barre">
     <button class="ico" id="fermer" title="Retour à l’accueil" aria-label="Retour à l’accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     <button class="ico" id="btn-sommaire" title="Sommaire" aria-label="Sommaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
-    <div class="titre" id="titre-courant">Le Redoublant</div>
-    <button class="ico" id="moins" title="Texte plus petit" aria-label="Texte plus petit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19l5-13 5 13M6 14h6M17 12h5"/></svg></button>
-    <button class="ico" id="plus" title="Texte plus grand" aria-label="Texte plus grand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 19l5-13 5 13M5 14h6M19.5 9v6M16.5 12h6"/></svg></button>
+    <div style="flex:1"></div>
     <button class="ico" id="theme" title="Mode nuit" aria-label="Mode nuit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <button class="ico" id="plein" title="Plein écran" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
   </div>
   <div class="sommaire" id="sommaire" hidden></div>
   <div class="scene" id="scene">
+    <div class="chargement" id="chargement">Ouverture du livre…</div>
     <button class="fleche g" id="prec" aria-label="Page précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div id="livre"></div>
     <button class="fleche d" id="suiv" aria-label="Page suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -225,233 +197,162 @@ h1{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-s
 </div>
 
 <script src="vendor/page-flip.browser.js"></script>
-<script>
-(() => {
-'use strict';
+<script type="module">
+import * as pdfjs from './vendor/pdf.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = './vendor/pdf.worker.min.mjs';
+
 const $ = s => document.querySelector(s);
-const cle = k => 'redoublant.' + k;
-const lire = (k, d) => { try { const v = localStorage.getItem(cle(k)); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
-const ecrire = (k, v) => { try { localStorage.setItem(cle(k), JSON.stringify(v)); } catch (e) {} };
-const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// Tiret de dialogue : le trait d’union du manuscrit devient un demi-cadratin.
-const typo = s => esc(s).replace(/^-\s*/, '– ');
+const lire = (k, d) => { try { const v = localStorage.getItem('redoublant.' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+const ecrire = (k, v) => { try { localStorage.setItem('redoublant.' + k, JSON.stringify(v)); } catch (e) {} };
 
-let L = null, flip = null, pages = [], echelle = lire('echelle', 1), ancre = lire('ancre', null), pageCourante = 0, dims = null;
+const QUATRIEME = [
+  'Une rentrée comme les autres. Un lycéen invisible. Du moins, c’est ce que Tristan croit ce lundi de septembre.',
+  'Il suffit d’un visage croisé dans un escalier. Teva. Le redoublant. Une mâchoire d’homme, un corps qui n’a rien d’un gamin.',
+  'Cette obsession va l’entraîner bien plus loin qu’un simple regard volé. Plus loin que ce qu’il était prêt à s’avouer.',
+  'Désir, secret, emprise, premières fois.',
+  'Entre celui qui domine et celui qui subit, jusqu’où ira-t-il pour reprendre le pouvoir qu’on lui avait pris ?'];
+const quatrieme = QUATRIEME.map((p, i) => '<p' + (i === 3 ? ' class="fort"' : '') + '>' + p + '</p>').join('');
+// La table des matières du livre : les numéros sont ceux des pages du PDF.
+// Numéros imprimés sur les pages ; la page imprimée n est la page n + 2 du PDF.
+const CHAPITRES = [['Le Couloir', 5], ['TVA TEVA', 19], ['L’Approche', 39], ['Les Chiottes', 56], ['Le Dernier Étage', 87],
+  ['Gwendal', 110], ['L’Appli', 132], ['Théo', 158], ['Le Revoir', 199], ['Démonté', 221], ['Un mot avant de refermer', 257]];
 
-fetch('livre.json').then(r => r.json()).then(d => { L = d; accueil(); });
+$('#quatrieme').innerHTML = quatrieme;
+const TITRE = '<div class="tp"><div class="s">Les Récits brûlants</div><div class="o"></div><div class="g">Le<br>Redoublant</div><div class="o"></div><div class="a">Tristan Joncour</div><div class="r">roman</div></div>';
+let doc = null, flip = null, taille = null, vue = null, courante = 0, rendus = new Map(), elPages = [];
+let page = lire('page', 0);
 
 function accueil() {
-  $('#avert').innerHTML = L.avertissement.map(p => '<p>' + esc(p) + '</p>').join('');
-  $('#quatrieme').innerHTML = L.quatrieme.map((p, i) => '<p' + (i === 3 ? ' class="fort"' : '') + '>' + esc(p) + '</p>').join('');
-  const mots = L.chapitres.reduce((n, c) => n + c.paras.join(' ').split(/\s+/).length, 0);
-  const h = Math.round(mots / 230 / 60 * 2) / 2;
-  $('#meta').innerHTML = '<span><b>' + L.chapitres.length + '</b> chapitres</span><span>environ <b>' + h.toString().replace('.', ',') + ' h</b> de lecture</span><span>' + L.edition.replace(' : ', ' ') + '</span><span class="badge18">18+</span>';
-  if (ancre) { $('#ouvrir-t').textContent = 'Reprendre la lecture'; $('#debut').hidden = false; }
+  const repris = page > 1;
+  $('#ouvrir-t').textContent = repris ? 'Reprendre la lecture' : 'Ouvrir le livre';
+  $('#debut').hidden = !repris;
   if (!lire('majeur', false)) $('#porte').hidden = false;
 }
+accueil();
 $('#entrer').onclick = () => { ecrire('majeur', true); $('#porte').hidden = true; };
-$('#ouvrir').onclick = () => ouvrir(false);
-$('#debut').onclick = () => { ancre = null; ecrire('ancre', null); ouvrir(true); };
+$('#ouvrir').onclick = () => ouvrir();
+$('#debut').onclick = () => { page = 0; ecrire('page', 0); ouvrir(); };
 $('#fermer').onclick = () => { $('#lecteur').hidden = true; document.body.style.overflow = ''; if (document.fullscreenElement) document.exitFullscreen(); accueil(); };
 
-function ouvrir(duDebut) {
+async function ouvrir() {
   if (!lire('majeur', false)) { $('#porte').hidden = false; return; }
   $('#lecteur').hidden = false;
   document.body.style.overflow = 'hidden';
-  if (lire('nuit', false)) $('#lecteur').classList.add('nuit');
-  document.fonts.ready.then(() => monter(duDebut ? 0 : null));
+  $('#lecteur').classList.toggle('nuit', lire('nuit', false));
+  $('#theme').classList.toggle('actif', lire('nuit', false));
+  if (!doc) {
+    doc = await pdfjs.getDocument('le-redoublant.pdf').promise;
+    const p1 = await doc.getPage(1);
+    vue = p1.getViewport({ scale: 1 });
+  }
+  $('#chargement').hidden = true;
+  monter();
 }
 
-/* ---------- Mise en pages ---------- */
+/* Le livre relié : couverture, garde, page de titre, puis les pages du PDF
+   à partir de l'avertissement. Le PDF commence par une page blanche, la
+   couverture et la page d'imprimeur, et finit par quatre pages blanches :
+   on les saute. Les pages impaires tombent à droite, comme dans le livre. */
+const PREMIERE = 4, DERNIERE = 260;
+function sequence() {
+  const s = [{ t: 'couv' }, { t: 'garde' }, { t: 'titre' }];
+  for (let n = PREMIERE; n <= DERNIERE; n++) s.push({ t: 'pdf', n });
+  if ((s.length + 1) % 2) s.push({ t: 'garde' });
+  s.push({ t: 'dos' });
+  return s;
+}
+const indexDe = p => p + 1;            // page imprimée p → position dans le livre
+const numeroDe = i => i - 1;           // et l'inverse
+const IMPRIMEES = DERNIERE - 2;
+
 function calculer() {
   const sc = $('#scene'), W = sc.clientWidth - (innerWidth > 880 ? 120 : 16), H = sc.clientHeight - 16;
-  const r = 0.625;
-  let h = Math.min(H, 980), w = Math.round(h * r);
-  const double = innerWidth > 880 && W >= 2 * w * 0.9;
+  const r = vue.width / vue.height;
+  let h = H, w = Math.round(h * r);
+  const double = innerWidth > 880 && W >= 2 * w * 0.85;
   if (double) { if (2 * w > W) { w = Math.floor(W / 2); h = Math.round(w / r); } }
-  else {
-    // Sur téléphone, une seule page : elle prend toute la largeur et
-    // s'allonge un peu au-delà du 5:8 pour mieux remplir l'écran.
-    w = Math.min(W, 560); h = Math.min(H, Math.round(w / 0.56));
-  }
-  const fs = Math.max(13.5, Math.min(21, w / 24.5)) * echelle;
-  return { w, h, double, fs, marge: Math.round(w * 0.105), tete: Math.round(h * 0.075), pied: Math.round(h * 0.07) };
+  else if (w > W) { w = W; h = Math.round(w / r); }
+  return { w, h, double };
 }
 
-function coquille(cls, html, tete, a) {
-  return { cls, html, tete, a };
-}
-
-function paginer(d) {
-  const out = [];
-  const m = document.createElement('div');
-  m.className = 'page mesure';
-  m.style.cssText += ';width:' + d.w + 'px;height:' + d.h + 'px;--fs:' + d.fs + 'px;--marge:' + d.marge + 'px;--tete:' + d.tete + 'px;--pied:' + d.pied + 'px;position:absolute';
-  m.innerHTML = '<div class="pg"><div class="tete"></div><div class="texte"></div><div class="pied-page"></div></div>';
-  $('#lecteur').appendChild(m);
-  const zone = m.querySelector('.texte');
-  const deborde = () => zone.scrollHeight > zone.clientHeight + 1;
-
-  // Coule une suite de paragraphes dans des pages successives.
-  // debut : le HTML placé en tête de la première page (ouverture de chapitre).
-  function couler(paras, tete, debut, idChap, premierCls) {
-    let courant = debut || '', a0 = null;
-    zone.innerHTML = courant;
-    // Pas de titre courant sur la page qui ouvre un chapitre, comme dans un livre.
-    let premiere = !!debut;
-    const fermer = () => { out.push({ cls: 'texte-page', html: zone.innerHTML, tete: premiere ? '' : tete, titre: tete, a: a0 }); premiere = false; zone.innerHTML = ''; a0 = null; };
-    paras.forEach((txt, i) => {
-      const cls = [];
-      if (i === 0 && premierCls) cls.push(premierCls === 'premier' && txt.length < 160 ? 'premier-court' : premierCls);
-      if (txt.length < 2) cls.push('court');
-      const aid = idChap + ':' + i;
-      const p = document.createElement('p');
-      if (cls.length) p.className = cls.join(' ');
-      p.dataset.a = aid;
-      p.innerHTML = typo(txt);
-      zone.appendChild(p);
-      if (a0 === null) a0 = aid;
-      if (!deborde()) return;
-      // Le paragraphe ne tient pas : on cherche combien de mots passent.
-      const mots = typo(txt).split(' ');
-      let bas = 0, haut = mots.length;
-      while (bas < haut) {
-        const mid = Math.ceil((bas + haut) / 2);
-        p.innerHTML = mots.slice(0, mid).join(' ');
-        if (deborde()) haut = mid - 1; else bas = mid;
-      }
-      if (bas === 0) { zone.removeChild(p); fermer(); }
-      else { p.innerHTML = mots.slice(0, bas).join(' '); p.style.textAlignLast = 'justify'; fermer(); }
-      let reste = mots.slice(bas);
-      while (reste.length) {
-        const q = document.createElement('p');
-        q.dataset.a = aid;
-        const qc = bas > 0 ? 'suite' : cls.join(' ');
-        if (qc) q.className = qc;
-        q.innerHTML = reste.join(' ');
-        zone.appendChild(q);
-        a0 = aid;
-        if (!deborde()) { reste = []; break; }
-        let b2 = 0, h2 = reste.length;
-        while (b2 < h2) { const mid = Math.ceil((b2 + h2) / 2); q.innerHTML = reste.slice(0, mid).join(' '); if (deborde()) h2 = mid - 1; else b2 = mid; }
-        q.innerHTML = reste.slice(0, b2).join(' '); q.style.textAlignLast = 'justify';
-        fermer(); reste = reste.slice(b2); bas = 1;
-      }
-    });
-    if (zone.innerHTML.trim()) fermer();
-  }
-
-  // Couverture, page de titre, droits, avertissement, dédicace, sommaire
-  out.push({ cls: 'couv', dur: true, html: '<img src="couverture.jpg" alt="Couverture du Redoublant">' });
-  out.push({ cls: 'plein', html: '<div class="centre"><div class="serie">' + esc(L.serie) + '</div><div class="gros">Le<br>Redoublant</div><div class="aut">' + esc(L.auteur) + '</div></div>' });
-  out.push({ cls: 'plein', html: '<div class="droits"><p>Copyright © 2026 par Tristan Joncour.<br>Tous droits réservés.</p><p>Aucune partie de cette publication ne peut être reproduite, distribuée ou transmise sous quelque forme ou par quelque moyen que ce soit sans l’autorisation écrite préalable de l’auteur, sauf dans le cas de brèves citations.</p><p>' + esc(L.edition) + '<br>ISBN ' + L.isbn + '</p></div>' });
-  couler(L.avertissement, '', '<div class="sec">Avertissement</div>', 'av', 'suite');
-  out.push({ cls: 'plein', html: '<div class="centre"><div class="ded">' + L.dedicace.map(esc).join('<br>') + '</div></div>' });
-  const iToc = out.length;
-  out.push({ cls: 'plein', html: '' });
-
-  const debuts = [];
-  L.chapitres.forEach(c => {
-    debuts.push(out.length);
-    const ouv = '<div class="ouverture"><div class="ch">Chapitre ' + c.n + '</div><h3>' + esc(c.titre) + '</h3><div class="orn"></div></div>';
-    couler(c.paras, c.titre, ouv, c.n, 'premier');
-  });
-  const iPost = out.length;
-  couler(L.postface.concat([]), 'Un mot avant de refermer', '<div class="sec">Un mot avant de refermer</div>', 'pf', 'suite');
-  out[out.length - 1].html += '<p class="signature">' + esc(L.signature) + '</p>';
-  // La signature peut déborder : on la vérifie comme le reste.
-  zone.innerHTML = out[out.length - 1].html;
-  if (deborde()) { out[out.length - 1].html = out[out.length - 1].html.replace(/<p class="signature">.*<\/p>$/, ''); out.push({ cls: 'texte-page', html: '<p class="signature">' + esc(L.signature) + '</p>', tete: 'Un mot avant de refermer' }); }
-
-  // Le dos doit tomber seul, en dernière page : nombre de pages pair.
-  if ((out.length + 1) % 2) out.push({ cls: 'plein', html: '' });
-  out.push({ cls: 'dos4', dur: true, html: '<div class="centre">' + L.quatrieme.map((p, i) => '<p' + (i === 3 ? ' class="fort"' : '') + '>' + esc(p) + '</p>').join('') + '<div class="isbn">ISBN ' + L.isbn + '</div></div>' });
-
-  // Sommaire, maintenant que les numéros sont connus
-  out[iToc].html = '<div class="toc"><h4>Sommaire</h4>' + L.chapitres.map((c, k) =>
-    '<a href="#" data-page="' + debuts[k] + '"><span>' + esc(c.titre) + '</span><span class="l"></span><span class="n">' + debuts[k] + '</span></a>').join('') +
-    '<a href="#" data-page="' + iPost + '"><span>Un mot avant de refermer</span><span class="l"></span><span class="n">' + iPost + '</span></a></div>';
-
-  m.remove();
-  return { pages: out, debuts, iPost };
-}
-
-function monter(forcer) {
-  dims = calculer();
-  const res = paginer(dims);
-  pages = res.pages;
+function monter() {
+  taille = calculer();
+  const seq = sequence();
   if (flip) { try { flip.destroy(); } catch (e) {} }
   // destroy() retire le conteneur du document : on en remet un neuf, à sa place.
   const vieux = $('#livre'); if (vieux) vieux.remove();
   $('#scene').insertBefore(Object.assign(document.createElement('div'), { id: 'livre' }), $('#suiv'));
   const el = $('#livre');
-  el.style.setProperty('--fs', dims.fs + 'px'); el.style.setProperty('--marge', dims.marge + 'px');
-  el.style.setProperty('--tete', dims.tete + 'px'); el.style.setProperty('--pied', dims.pied + 'px');
-  pages.forEach((p, i) => {
+  el.style.setProperty('--fs', Math.max(12, taille.w / 26) + 'px');
+  rendus = new Map();
+  elPages = seq.map((s, i) => {
     const d = document.createElement('div');
-    d.className = 'page ' + (p.cls || '') + ' ' + (i % 2 ? 'gauche' : 'droite');
-    if (p.dur) d.dataset.density = 'hard';
-    if (p.cls === 'texte-page') {
-      d.innerHTML = '<div class="pg"><div class="tete">' + esc(p.tete || '') + '</div><div class="texte">' + p.html + '</div><div class="pied-page">' + i + '</div></div>';
-    } else d.innerHTML = '<div class="pg">' + p.html + '</div>';
-    if (p.a) d.dataset.a = p.a;
+    d.className = 'page ' + (i % 2 ? 'gauche' : 'droite');
+    if (s.t === 'couv') { d.classList.add('couv'); d.dataset.density = 'hard'; d.innerHTML = '<img src="couverture.jpg" alt="Couverture du Redoublant">'; }
+    else if (s.t === 'dos') { d.classList.add('dos4'); d.dataset.density = 'hard'; d.innerHTML = quatrieme; }
+    else if (s.t === 'garde') d.classList.add('garde');
+    else if (s.t === 'titre') { d.classList.add('titre-page'); d.innerHTML = TITRE; }
+    else d.dataset.n = s.n;
     el.appendChild(d);
+    return d;
   });
   flip = new St.PageFlip(el, {
-    width: dims.w, height: dims.h, size: 'fixed', showCover: true, usePortrait: !dims.double,
-    maxShadowOpacity: .45, mobileScrollSupport: false, flippingTime: 750, startZIndex: 3, autoSize: true, clickEventForward: true
+    width: taille.w, height: taille.h, size: 'fixed', showCover: true, usePortrait: !taille.double,
+    maxShadowOpacity: .45, mobileScrollSupport: false, flippingTime: 750, autoSize: true
   });
-  flip.loadFromHTML(el.querySelectorAll('.page'));
-  el.querySelectorAll('.toc a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); aller(+a.dataset.page, true); }));
-  let depart = 0;
-  if (forcer === 0) depart = 0;
-  else if (ancre) {
-    // L'ancre est le paragraphe en cours : on rouvre la page qui le contient,
-    // même si la nouvelle mise en pages le fait commencer plus haut.
-    const k = pages.findIndex(p => p.html && p.html.includes('data-a="' + ancre + '"'));
-    if (k >= 0) depart = k;
-  }
+  flip.loadFromHTML(elPages);
+  const depart = Math.min(Math.max(0, page), elPages.length - 1);
   if (depart) flip.turnToPage(depart);
   flip.on('flip', e => apres(e.data));
   apres(flip.getCurrentPageIndex());
-  construireSommaire(res);
+  sommaire();
 }
 
-function chapitreDe(i) {
-  let t = 'Le Redoublant';
-  for (let k = i; k >= 0; k--) if (pages[k] && pages[k].titre) { t = pages[k].titre; break; }
-  return t;
+// On ne dessine que les pages autour de celle qu'on lit : le PDF entier
+// en mémoire ferait ramer un téléphone.
+async function dessiner(i) {
+  const d = elPages[i];
+  if (!d || !d.dataset.n || rendus.has(i)) return;
+  rendus.set(i, true);
+  const pg = await doc.getPage(+d.dataset.n);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const v = pg.getViewport({ scale: taille.w / vue.width * dpr });
+  const c = document.createElement('canvas');
+  c.width = Math.round(v.width); c.height = Math.round(v.height);
+  await pg.render({ canvasContext: c.getContext('2d'), viewport: v }).promise;
+  d.replaceChildren(c);
 }
+function autour(i) {
+  for (let k = i - 2; k <= i + 5; k++) dessiner(k);
+  // On libère la mémoire des pages lointaines.
+  for (const k of [...rendus.keys()]) if (Math.abs(k - i) > 12) { rendus.delete(k); elPages[k].replaceChildren(); }
+}
+
 function apres(i) {
-  pageCourante = i;
-  const p = pages[i];
-  if (p && p.a) { ancre = p.a; ecrire('ancre', ancre); }
-  else if (i === 0) {}
-  $('#titre-courant').textContent = chapitreDe(i);
-  const n = pages.length;
-  $('#num').textContent = 'p. ' + Math.max(1, i) + ' / ' + (n - 1);
-  $('#avance').style.width = (100 * i / (n - 1)) + '%';
-  document.querySelectorAll('#sommaire button').forEach(b => b.classList.toggle('ici', +b.dataset.fin > i && +b.dataset.page <= i));
+  courante = i; page = i; ecrire('page', i);
+  autour(i);
+  const n = numeroDe(i), total = IMPRIMEES;
+  $('#num').textContent = n >= 1 && n <= total ? 'p. ' + n + ' / ' + total : (i === 0 ? 'Couverture' : i >= elPages.length - 1 ? 'Quatrième de couverture' : '');
+  $('#avance').style.width = (100 * i / (elPages.length - 1)) + '%';
+  document.querySelectorAll('#sommaire button').forEach((b, k) => {
+    const deb = CHAPITRES[k][1], fin = CHAPITRES[k + 1] ? CHAPITRES[k + 1][1] : 1e9;
+    b.classList.toggle('ici', n >= deb && n < fin);
+  });
 }
-function aller(i, anime) { if (!flip) return; if (anime && Math.abs(i - pageCourante) < 3) flip.flip(i); else flip.turnToPage(i); apres(i); }
+function aller(i) { if (!flip) return; flip.turnToPage(i); apres(i); }
 
-function construireSommaire(res) {
+function sommaire() {
   const s = $('#sommaire');
-  const bornes = res.debuts.concat([res.iPost, pages.length]);
-  s.innerHTML = L.chapitres.map((c, k) => '<button data-page="' + res.debuts[k] + '" data-fin="' + bornes[k + 1] + '"><span class="no">' + c.n + '</span><span class="t">' + esc(c.titre) + '</span><span class="p">p. ' + res.debuts[k] + '</span></button>').join('') +
-    '<button data-page="' + res.iPost + '" data-fin="' + pages.length + '"><span class="no">·</span><span class="t">Un mot avant de refermer</span><span class="p">p. ' + res.iPost + '</span></button>';
-  s.querySelectorAll('button').forEach(b => b.onclick = () => { s.hidden = true; aller(+b.dataset.page); });
-  apres(pageCourante);
+  s.innerHTML = CHAPITRES.map(([t, p], k) => '<button data-p="' + p + '"><span class="no">' + (k < 10 ? k + 1 : '·') + '</span><span class="t">' + t + '</span><span class="p">p. ' + p + '</span></button>').join('');
+  s.querySelectorAll('button').forEach(b => b.onclick = () => { s.hidden = true; aller(indexDe(+b.dataset.p)); });
 }
 
 $('#btn-sommaire').onclick = e => { e.stopPropagation(); $('#sommaire').hidden = !$('#sommaire').hidden; };
 document.addEventListener('click', e => { if (!e.target.closest('#sommaire,#btn-sommaire')) $('#sommaire').hidden = true; });
 $('#prec').onclick = () => flip && flip.flipPrev();
 $('#suiv').onclick = () => flip && flip.flipNext();
-$('#piste').onclick = e => { const r = e.currentTarget.getBoundingClientRect(); aller(Math.round((e.clientX - r.left) / r.width * (pages.length - 1))); };
-$('#moins').onclick = () => { echelle = Math.max(.8, +(echelle - .1).toFixed(2)); ecrire('echelle', echelle); monter(); };
-$('#plus').onclick = () => { echelle = Math.min(1.4, +(echelle + .1).toFixed(2)); ecrire('echelle', echelle); monter(); };
-$('#theme').onclick = () => { const n = $('#lecteur').classList.toggle('nuit'); ecrire('nuit', n); };
+$('#piste').onclick = e => { const r = e.currentTarget.getBoundingClientRect(); aller(Math.round((e.clientX - r.left) / r.width * (elPages.length - 1))); };
+$('#theme').onclick = () => { const n = $('#lecteur').classList.toggle('nuit'); $('#theme').classList.toggle('actif', n); ecrire('nuit', n); };
 $('#plein').onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); };
 document.addEventListener('keydown', e => {
   if ($('#lecteur').hidden || !flip) return;
@@ -461,11 +362,10 @@ document.addEventListener('keydown', e => {
 });
 let minuterie;
 addEventListener('resize', () => {
-  if ($('#lecteur').hidden) return;
+  if ($('#lecteur').hidden || !doc) return;
   clearTimeout(minuterie);
-  minuterie = setTimeout(() => { const d = calculer(); if (!dims || d.w !== dims.w || d.h !== dims.h || d.double !== dims.double) monter(); }, 250);
+  minuterie = setTimeout(() => { const d = calculer(); if (!taille || d.w !== taille.w || d.h !== taille.h || d.double !== taille.double) monter(); }, 250);
 });
-})();
 </script>
 </body>
 </html>
