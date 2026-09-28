@@ -13,7 +13,7 @@
 <link rel="icon" href="couverture.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--fond:#0E0B09;--or:#C9A36A;--or-clair:#E3C58F;--texte:#EDE4D6;--doux:#A89B89}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -53,21 +53,22 @@ html{scrollbar-color:#6B5536 #0E0B09;scrollbar-width:thin}
 /* Le bloc titre suit la couverture : série, titre, filet et auteur sur un
    même axe, centrés sur la largeur du titre. */
 .entete{display:inline-flex;flex-direction:column;align-items:center;text-align:center}
-.entete .serie{padding-left:.42em}
+.entete .serie{display:flex;flex-direction:column;align-items:center;gap:0;padding-left:.42em;font-family:'Bebas Neue',Oswald,sans-serif;font-size:19px;letter-spacing:.34em;color:#C9A36A}
 .entete .serie::after{display:none}
-.entete .auteur{padding-left:.42em}
+.entete .auteur{padding-left:.4em;font-family:'Bebas Neue',Oswald,sans-serif;font-size:26px;letter-spacing:.4em;color:#BE9560}
 .serie{font-family:Oswald,sans-serif;font-weight:400;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:14px}
 .serie::after{content:'';height:1px;width:64px;background:linear-gradient(90deg,var(--or),transparent)}
-/* Le titre en or métallisé, comme sur la couverture : un dégradé à reflets,
-   un liseré sombre pour détacher les lettres du fond. Il reste du texte,
-   donc net à toutes les tailles. */
-h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-size:clamp(52px,7vw,96px);line-height:.9;letter-spacing:.02em;margin:16px 0 0;display:inline-block;padding:0 .06em;text-align:center;
-  background:linear-gradient(180deg,#FBEBC4 0%,#E6C68A 22%,#B98C4C 48%,#EBD29A 64%,#C69B5C 80%,#8E6A36 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 1px 0 rgba(0,0,0,.55)) drop-shadow(0 10px 24px rgba(201,163,106,.18));
-  text-rendering:geometricPrecision}
-.filet{width:62%;height:1px;margin:18px 0 14px;background:linear-gradient(90deg,transparent,#C9A36A 30%,#C9A36A 70%,transparent);position:relative}
-.filet::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:#E3C58F;transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 10px rgba(227,197,143,.6)}
+/* Le titre reprend la couverture : même police condensée (Bebas Neue) et
+   une texture de feuille d'or (or.svg : fond doré, marbrures, grain)
+   découpée par les lettres. Il reste du texte, donc net partout. */
+h1{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(64px,8.4vw,120px);line-height:.86;letter-spacing:.012em;margin:14px 0 0;display:inline-block;padding:.04em .06em 0;text-align:center;
+  background:url(or.svg) center/cover,linear-gradient(180deg,#EBD29A,#B98C4C 55%,#8E6A36);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 1px rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(201,163,106,.14))}
+/* Sous la série, un trait qui s'allume au centre ; sous le titre, une
+   arabesque entre deux filets, comme sur la couverture. */
+.lueur{width:100%;height:1px;margin-top:10px;background:linear-gradient(90deg,transparent,#8C6A3C 20%,#F6DDA6 50%,#8C6A3C 80%,transparent);position:relative}
+.lueur::after{content:'';position:absolute;left:50%;top:50%;width:26px;height:5px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#FFF0CC,rgba(255,220,150,0));filter:blur(.5px)}
+.arabesque{width:64%;margin:16px 0 12px;color:#B8904F;display:block}
 .auteur{font-family:Oswald,sans-serif;font-size:15px;letter-spacing:.42em;text-transform:uppercase;color:var(--texte)}
 .quatrieme{max-width:470px;margin:22px auto 26px;font-family:'EB Garamond',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#D9CDBB}
 .quatrieme p+p{margin-top:12px}
@@ -139,12 +140,12 @@ h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-s
 .titre-page{background:#fff radial-gradient(80% 60% at 50% 45%,#FBF6EC,#fff 75%)}
 .tp{position:absolute;inset:7%;border:1px solid #D9C49C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   outline:1px solid #EADBBE;outline-offset:-7px}
-.tp .s{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.62);letter-spacing:.45em;text-transform:uppercase;color:#A8844F;padding-left:.45em}
+.tp .s{font-family:'Bebas Neue',Oswald,sans-serif;font-size:calc(var(--fs)*.8);letter-spacing:.4em;text-transform:uppercase;color:#A8844F;padding-left:.45em}
 .tp .o{width:46%;height:1px;margin:1.3em 0;background:linear-gradient(90deg,transparent,#C9A36A,transparent);position:relative}
 .tp .o::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;background:#C9A36A;transform:translate(-50%,-50%) rotate(45deg)}
-.tp .g{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:calc(var(--fs)*2.9);line-height:.92;letter-spacing:.01em;
-  background:linear-gradient(180deg,#D8B77E 0%,#B08A4F 55%,#7E5E2E 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tp .a{font-family:Oswald,sans-serif;font-size:calc(var(--fs)*.78);letter-spacing:.38em;text-transform:uppercase;color:#2A2118;padding-left:.38em}
+.tp .g{font-family:'Bebas Neue',Oswald,sans-serif;font-weight:400;text-transform:uppercase;font-size:calc(var(--fs)*3.3);line-height:.88;letter-spacing:.012em;padding:.04em .04em 0;
+  background:url(or.svg) center/cover,linear-gradient(180deg,#D8B77E,#B08A4F 55%,#7E5E2E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp .a{font-family:'Bebas Neue',Oswald,sans-serif;font-size:calc(var(--fs)*1.05);letter-spacing:.4em;text-transform:uppercase;color:#8C6A3C;padding-left:.38em}
 .tp .r{position:absolute;bottom:9%;font-family:'EB Garamond',serif;font-style:italic;font-size:calc(var(--fs)*.9);color:#8C7B63}
 .couv{background:#120d09}
 .couv img{width:100%;height:100%;object-fit:cover;display:block}
@@ -193,9 +194,9 @@ h1{font-family:Oswald,sans-serif;font-weight:500;text-transform:uppercase;font-s
   </div>
   <section class="fiche">
     <div class="entete">
-      <div class="serie">Les Récits brûlants</div>
+      <div class="serie">Les Récits brûlants<div class="lueur"></div></div>
       <h1>Le<br>Redoublant</h1>
-      <div class="filet"></div>
+      <svg class="arabesque" viewBox="0 0 300 14" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 7h118M182 7h118" stroke-opacity=".8"/><path d="M150 2l5 5-5 5-5-5z" fill="currentColor"/><path d="M143 7c-4-4-9-4-11 0 2 3 6 3 8 0M157 7c4-4 9-4 11 0-2 3-6 3-8 0M132 7c-4-3-9-3-13 0M168 7c4-3 9-3 13 0"/></svg>
       <div class="auteur">Tristan Joncour</div>
     </div>
     <div class="quatrieme" id="quatrieme"></div>
